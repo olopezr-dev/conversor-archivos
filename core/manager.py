@@ -3,6 +3,7 @@
 import os
 # Importamos nuestros "plugins" de conversión
 from conversores.word_a_pdf import procesar_word
+from conversores.pdf_a_word import procesar_pdf
 
 
 def enrutar_archivo(ruta_archivo):
@@ -25,8 +26,16 @@ def enrutar_archivo(ruta_archivo):
     # --- EL RUTEADOR ---
 
     # Comprobamos la extensión y llamamos al conversor correspondiente
+    
+    # Word a PDF
     if extension == ".docx":
         return procesar_word(ruta_archivo)
+    
+    # PDF a Word
+    elif extension == ".pdf":
+        return procesar_pdf(ruta_archivo)
+
+
     else:
         print(f"⚠️ Manager: El formato '{extension}' todavía no está soportado en esta versión.")
         return False
