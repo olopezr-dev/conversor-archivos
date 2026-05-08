@@ -1,6 +1,6 @@
-# Archivo main del programa. Aquí se importan los módulos de conversión y se maneja la lógica principal del programa.
+# Archivo main del programa. Aquí se importa el módulo de gestión y se inicia la consola para que el usuario interactúe.
 
-from conversores.word_a_pdf import procesar_word
+from core.manager import enrutar_archivo
 
 
 def iniciar_consola():
@@ -10,19 +10,17 @@ def iniciar_consola():
 
     print("\n--- 📄 Conversor de Archivos Universal 📄 ---")
     
-    ruta_archivo = input("Arrastra aquí tu archivo de Word (.docx) y pulsa Enter: ")
+    ruta_archivo = input("Escribe la dirección o arrastra aquí tu archivo de Word (.docx) y pulsa Enter: ")
 
     # Limpiamos la ruta por si Windows añade comillas invisibles o espacios extra
     ruta_archivo = ruta_archivo.replace('"', '').replace("'", "").strip()
 
     print(f"\nProcesando: {ruta_archivo}")
-
-
-    if ruta_archivo.lower().endswith('.docx'):
-        procesar_word(ruta_archivo)
-    else:
-        print("Formato no soportado. Por favor, ingresa un archivo .docx")
     
+    # Le pasamos el archivo al manager y que él decida qué hacer
+    resultado = enrutar_archivo(ruta_archivo)
+
+
 
 # Función main que inicia la consola
 if __name__ == "__main__":
