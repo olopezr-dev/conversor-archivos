@@ -24,6 +24,6 @@ def iniciar_consola():
         print("Formato no soportado. Por favor, ingresa un archivo .docx")
     
 
-    # Función main que inicia la consola
-    if __name__ == "__main__":
-        iniciar_consola()
+# Función main que inicia la consola
+if __name__ == "__main__":
+    iniciar_consola()
